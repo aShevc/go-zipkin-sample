@@ -1,0 +1,63 @@
+{
+    "type": "record",
+    "name": "LogLinedMessage",
+    "fields": [
+        {
+            "type": {
+                        "type": "record",
+                        "name": "LogLine",
+                        "fields": [
+                        {
+                                "type": [
+                                "null",
+                                {
+                                   "type": "record",
+                                   "name": "TraceInfo",
+                                   "fields": [
+                                       {
+                                           "name": "spanId",
+                                           "type": "long"
+                                       },
+                                       {
+                                           "name": "traceId",
+                                           "type": "long"
+                                       },
+                                       {
+                                           "name": "parentSpanId",
+                                           "type": ["null", "long"],
+                                           "default": null
+                                       },
+                                       {
+                                           "name": "sampled",
+                                           "type": "boolean",
+                                           "default": false
+                                       }
+                                   ]
+                                }
+                                ],
+                                "name": "traceInfo",
+                                "default": null
+                            }
+                        ]
+                    },
+            "name": "logline"
+        },
+        {
+            "type": {
+                        "type": "record",
+                        "name": "Message",
+                        "fields": [
+                            {
+                                "name": "time",
+                                "type": "long"
+                            },
+                            {
+                                "name": "msg",
+                                "type": "string"
+                            }
+                        ]
+                    },
+            "name": "payload"
+        }
+    ]
+}
