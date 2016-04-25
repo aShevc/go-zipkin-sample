@@ -67,14 +67,9 @@ func composeAvro(payloadMsg string, zipkinSpan *zipkin.Span) (*bytes.Buffer, err
 	record.Set("logline", logline)
 
 	writer := avro.NewGenericDatumWriter()
-	// SetSchema must be called before calling Write
 	writer.SetSchema(sample.NewLogLinedMessage().Schema())
-
-	// Create a new Buffer and Encoder to write to this Buffer
 	buffer := new(bytes.Buffer)
 	encoder := avro.NewBinaryEncoder(buffer)
-
-	// Write the record
 	err := writer.Write(record, encoder)
 	if err != nil {
 		return nil, err
