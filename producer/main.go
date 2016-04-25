@@ -1,7 +1,6 @@
 package main
 
 import (
-	kafkaClient "gopkg.in/Shopify/sarama.v1"
 	"time"
 	"github.com/elodina/go-avro"
 	"bytes"
@@ -46,11 +45,6 @@ func main() {
 
 		kafkaMsgSpan.ClientSendAndCollect()
 		time.Sleep(1000 * time.Millisecond)
-	}
-
-	//TODO: not quite sure why, but this code doesn't work without Sarama Kafka client imported. Will remove
-	if (false) {
-		kafkaClient.Logger.Print("this is a hack")
 	}
 }
 
